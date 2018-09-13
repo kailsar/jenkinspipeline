@@ -1,9 +1,6 @@
 pipeline {
     agent any
-    
-    parameters { 
-         string(name: 'tomcat_prod', defaultValue: '35.178.204.224', description: 'Production Server')
-    } 
+   
 
     triggers {
          pollSCM('* * * * *') // Polling Source Control
@@ -24,7 +21,7 @@ stages{
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "scp -i /home/jenkins/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat8/webapps"
+                        sh "cp /home/jenkins/tomcat-demo.pem **/target/*.war /var/lib/tomcat8/webapps"
                     }
                 }
             
