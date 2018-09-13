@@ -21,7 +21,7 @@ stages{
 
                 stage ("Deploy to Production"){
                     steps {
-                        sh "cp /home/jenkins/tomcat-demo.pem **/target/*.war /var/lib/tomcat8/webapps"
+                        sh "cp **/target/*.war /var/lib/tomcat8/webapps"
                     }
                 }
             
